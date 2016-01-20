@@ -1,2 +1,3 @@
 # cookbook
-Random joi shotcuts
+
+Random joi validation shortcuts and utilities
