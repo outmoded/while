@@ -86,12 +86,12 @@ describe('Entity', () => {
 
     describe('is()', () => {
 
-        it('generates a rule for enforcing entity', (done) => {
+        it('generates a rule for enforcing entity (user)', (done) => {
 
             const context = {
                 auth: {
                     credentials: {
-                        entity: 'user'
+                        user: 'steve'
                     }
                 }
             };
@@ -104,12 +104,30 @@ describe('Entity', () => {
             });
         });
 
+        it('generates a rule for enforcing entity (app)', (done) => {
+
+            const context = {
+                auth: {
+                    credentials: {
+                        app: 'test'
+                    }
+                }
+            };
+
+            const schema = Cookbook.entity.is('app', Joi.string());
+            Joi.validate('string', schema, { context }, (err, value) => {
+
+                expect(err).to.not.exist();
+                done();
+            });
+        });
+
         it('enforces required entity', (done) => {
 
             const context = {
                 auth: {
                     credentials: {
-                        entity: 'app'
+                        app: 'test'
                     }
                 }
             };
@@ -127,7 +145,7 @@ describe('Entity', () => {
             const context = {
                 auth: {
                     credentials: {
-                        entity: 'user'
+                        user: 'steve'
                     }
                 }
             };
@@ -145,7 +163,7 @@ describe('Entity', () => {
             const context = {
                 auth: {
                     credentials: {
-                        entity: 'user'
+                        user: 'steve'
                     }
                 }
             };
