@@ -80,3 +80,64 @@ describe('Scope', () => {
         });
     });
 });
+
+
+describe('Entity', () => {
+
+    describe('is()', () => {
+
+        it('generates a rule for enforcing entity', (done) => {
+
+            const context = {
+                auth: {
+                    credentials: {
+                        entity: 'user'
+                    }
+                }
+            };
+
+            const schema = Cookbook.entity.is('user', Joi.string());
+            Joi.validate('string', schema, { context }, (err, value) => {
+
+                expect(err).to.not.exist();
+                done();
+            });
+        });
+
+        it('enforces required entity', (done) => {
+
+            const context = {
+                auth: {
+                    credentials: {
+                        entity: 'app'
+                    }
+                }
+            };
+
+            const schema = Cookbook.entity.is('user', Joi.string());
+            Joi.validate('string', schema, { context }, (err, value) => {
+
+                expect(err).to.exist();
+                done();
+            });
+        });
+
+        it('enforces rule', (done) => {
+
+            const context = {
+                auth: {
+                    credentials: {
+                        entity: 'user'
+                    }
+                }
+            };
+
+            const schema = Cookbook.entity.is('user', Joi.number());
+            Joi.validate('string', schema, { context }, (err, value) => {
+
+                expect(err).to.exist();
+                done();
+            });
+        });
+    });
+});
