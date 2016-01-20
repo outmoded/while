@@ -139,5 +139,31 @@ describe('Entity', () => {
                 done();
             });
         });
+
+        it('enforces rule (required)', (done) => {
+
+            const context = {
+                auth: {
+                    credentials: {
+                        entity: 'user'
+                    }
+                }
+            };
+
+            const schema = {
+                a: Cookbook.entity.is('user', Joi.number().required())
+            };
+
+            Joi.validate({ a: 5 }, schema, { context }, (err, value1) => {
+
+                expect(err).to.not.exist();
+
+                Joi.validate({}, schema, { context }, (err, value2) => {
+
+                    expect(err).to.exist();
+                    done();
+                });
+            });
+        });
     });
 });
