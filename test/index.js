@@ -79,6 +79,63 @@ describe('Scope', () => {
             });
         });
     });
+
+    describe('excludes()', () => {
+
+        it('generates a rule for enforcing scope', (done) => {
+
+            const context = {
+                auth: {
+                    credentials: {
+                        scope: ['close']
+                    }
+                }
+            };
+
+            const schema = Cookbook.scope.excludes('open', Joi.string());
+            Joi.validate('string', schema, { context }, (err, value) => {
+
+                expect(err).to.not.exist();
+                done();
+            });
+        });
+
+        it('enforces excluded scope', (done) => {
+
+            const context = {
+                auth: {
+                    credentials: {
+                        scope: ['close']
+                    }
+                }
+            };
+
+            const schema = Cookbook.scope.excludes('close', Joi.string());
+            Joi.validate('string', schema, { context }, (err, value) => {
+
+                expect(err).to.exist();
+                done();
+            });
+        });
+
+        it('enforces rule', (done) => {
+
+            const context = {
+                auth: {
+                    credentials: {
+                        scope: ['open']
+                    }
+                }
+            };
+
+            const schema = Cookbook.scope.excludes('close', Joi.number());
+            Joi.validate('string', schema, { context }, (err, value) => {
+
+                expect(err).to.exist();
+                done();
+            });
+        });
+    });
 });
 
 
