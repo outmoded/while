@@ -1,11 +1,11 @@
 {
-  "name": "cookbook",
+  "name": "while",
   "description": "Random joi validation shortcuts",
   "version": "1.2.0",
   "author": "Eran Hammer <eran@hammer.io> (http://hueniverse.com)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hueniverse/cookbook"
+    "url": "git://github.com/hueniverse/while"
   },
   "main": "lib/index.js",
   "keywords": [
