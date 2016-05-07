@@ -3,7 +3,7 @@
 // Load modules
 
 const Code = require('code');
-const Cookbook = require('..');
+const While = require('..');
 const Joi = require('joi');
 const Lab = require('lab');
 
@@ -35,7 +35,7 @@ describe('Scope', () => {
                 }
             };
 
-            const schema = Cookbook.scope.has('open', Joi.string());
+            const schema = While.scope.has('open', Joi.string());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.not.exist();
@@ -53,7 +53,7 @@ describe('Scope', () => {
                 }
             };
 
-            const schema = Cookbook.scope.has('close', Joi.string());
+            const schema = While.scope.has('close', Joi.string());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
@@ -71,7 +71,7 @@ describe('Scope', () => {
                 }
             };
 
-            const schema = Cookbook.scope.has('open', Joi.number());
+            const schema = While.scope.has('open', Joi.number());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
@@ -92,7 +92,7 @@ describe('Scope', () => {
                 }
             };
 
-            const schema = Cookbook.scope.excludes('open', Joi.string());
+            const schema = While.scope.excludes('open', Joi.string());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.not.exist();
@@ -110,7 +110,7 @@ describe('Scope', () => {
                 }
             };
 
-            const schema = Cookbook.scope.excludes('close', Joi.string());
+            const schema = While.scope.excludes('close', Joi.string());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
@@ -128,7 +128,7 @@ describe('Scope', () => {
                 }
             };
 
-            const schema = Cookbook.scope.excludes('close', Joi.number());
+            const schema = While.scope.excludes('close', Joi.number());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
@@ -153,7 +153,7 @@ describe('Entity', () => {
                 }
             };
 
-            const schema = Cookbook.entity.is('user', Joi.string());
+            const schema = While.entity.is('user', Joi.string());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.not.exist();
@@ -171,7 +171,7 @@ describe('Entity', () => {
                 }
             };
 
-            const schema = Cookbook.entity.is('app', Joi.string());
+            const schema = While.entity.is('app', Joi.string());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.not.exist();
@@ -189,7 +189,7 @@ describe('Entity', () => {
                 }
             };
 
-            const schema = Cookbook.entity.is('user', Joi.string());
+            const schema = While.entity.is('user', Joi.string());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
@@ -207,7 +207,7 @@ describe('Entity', () => {
                 }
             };
 
-            const schema = Cookbook.entity.is('user', Joi.number());
+            const schema = While.entity.is('user', Joi.number());
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
@@ -226,7 +226,7 @@ describe('Entity', () => {
             };
 
             const schema = {
-                a: Cookbook.entity.is('user', Joi.number().required())
+                a: While.entity.is('user', Joi.number().required())
             };
 
             Joi.validate({ a: 5 }, schema, { context }, (err, value1) => {
