@@ -57,6 +57,7 @@ describe('Scope', () => {
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
+                expect(err.message).to.equal('Insufficient scope');
                 done();
             });
         });
@@ -95,7 +96,7 @@ describe('Scope', () => {
             const schema = While.scope.excludes('open', Joi.string());
             Joi.validate('string', schema, { context }, (err, value) => {
 
-                expect(err).to.not.exist();
+                expect(err).to.not.exist('Insufficient scope');
                 done();
             });
         });
@@ -114,6 +115,7 @@ describe('Scope', () => {
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
+                expect(err.message).to.equal('Insufficient scope');
                 done();
             });
         });
@@ -193,6 +195,7 @@ describe('Entity', () => {
             Joi.validate('string', schema, { context }, (err, value) => {
 
                 expect(err).to.exist();
+                expect(err.message).to.equal('User credentials required');
                 done();
             });
         });
