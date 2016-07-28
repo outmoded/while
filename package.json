@@ -1,7 +1,7 @@
 {
   "name": "while",
   "description": "Random joi validation shortcuts",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "author": "Eran Hammer <eran@hammer.io> (http://hueniverse.com)",
   "repository": {
     "type": "git",
